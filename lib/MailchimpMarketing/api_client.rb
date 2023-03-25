@@ -20,6 +20,7 @@ module MailchimpMarketing
       @host = "https://server.api.mailchimp.com/3.0"
       @user_agent = "Swagger-Codegen/#{VERSION}/ruby"
       set_config(config)
+      Excon.defaults[:middlewares].push(Excon::Middleware::Decompress)
     end
 
     def self.default
