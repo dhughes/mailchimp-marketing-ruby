@@ -20,7 +20,6 @@ module MailchimpMarketing
       @host = "https://server.api.mailchimp.com/3.0"
       @user_agent = "Swagger-Codegen/#{VERSION}/ruby"
       set_config(config)
-      Excon.defaults[:middlewares].push(Excon::Middleware::Decompress)
     end
 
     def self.default
@@ -66,8 +65,12 @@ module MailchimpMarketing
       headers[:Authorization] = "Bearer #@access_token" if @is_oauth
 
       host = @server.length > 0 ? @host.sub('server', @server) : @host
-      conn = Excon.new(host + path, :headers => headers, :read_timeout => @read_timeout, :write_timeout => @write_timeout, :connect_timeout => @connect_timeout)
-
+      conn = Excon.new(host + path,
+                       :headers => headers,
+                       :read_timeout => @read_timeout,
+                       :write_timeout => @write_timeout,
+                       :connect_timeout => @connect_timeout,
+                       :middlewares => [Excon.defaults[:middlewares], Excon::Middleware::Decompress].flatten)
       res = nil
       case http_method.to_sym.downcase
       when :post, :put, :patch, :delete

@@ -11,5 +11,5 @@ Swagger Codegen version: 2.4.12
 =end
 
 module MailchimpMarketing
-  VERSION = '3.0.80.custom-1'
+  VERSION = '3.0.80.custom-5'
 end
