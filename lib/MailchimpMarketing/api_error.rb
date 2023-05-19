@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.12
 
 module MailchimpMarketing
   class ApiError < StandardError
-    attr_reader :status, :type, :title, :detail, :instance, :errors
+    attr_reader :status, :type, :title, :detail, :instance, :errors, :response_headers, :response_body, :metadata
 
     # Usage examples:
     #   ApiError.new
@@ -30,9 +30,24 @@ module MailchimpMarketing
         arg.each do |k, v|
           instance_variable_set "@#{k}", v
         end
+
+        response = JSON.parse(response_body).with_indifferent_access
+        @metadata = {
+          status: status,
+          type: response[:type],
+          title: response[:title],
+          detail: response[:detail],
+          instance: response[:instance],
+          errors: errors,
+          response_headers: response_headers
+        }
       else
         super arg
       end
+    end
+
+    def bugsnag_meta_data
+      { api_error_details: metadata }
     end
   end
 end
