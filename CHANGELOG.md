@@ -2,6 +2,27 @@
 
 ## Transactional
 
+### 1.0.56
+* Adding DMARC and DKIM2 fields to the API reference
+
+### 1.0.55
+* Updating github actions bot user email
+
+### 1.0.54
+* Fixing a problem with Github auth token that was preventing builds from being created.
+
+### 1.0.53
+* Fixed broken ruby SDK test, updated PHP SDK to send form data via JSON
+
+### 1.0.52
+* Added the `is_broken_template` response to the /template endpoints that include it
+
+### 1.0.51
+* Fixed `/messages/send-template` documentation where incorrectly referenced the template name usage.
+
+### 1.0.50
+* Added a response parameter to /messages/send and /messages/send-template called 'queued_response' that details why an email was queued.
+
 ### 1.0.48
 * Allowing users to schedule messages (using messages/send, messages/send-template, messages/send-raw and messages/reschedule APIs) within a year from the date of scheduling.
 

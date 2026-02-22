@@ -26,8 +26,8 @@ gem 'MailchimpMarketing', :git => 'https://github.com/mailchimp/mailchimp-market
 
 ```shell
 gem build MailchimpMarketing.gemspec
-gem install ./MailchimpMarketing-3.0.80.gem
-gem 'MailchimpMarketing', '~> 3.0.80'
+gem install ./MailchimpMarketing-1.0.0.gem
+gem 'MailchimpMarketing', '~> 1.0.0'
 ```
 
 ## Quick Start
@@ -94,6 +94,10 @@ All URIs are relative to *https://server.api.mailchimp.com/3.0*
 | **accountExports.list_account_exports** | /account-exports |
 | **accountExports.create_account_export** | /account-exports |
 | **activityFeed.get_chimp_chatter** | /activity-feed/chimp-chatter |
+| **audiencescontacts.create_audience_contact** | /audiences/{audience_id}/contacts |
+| **audiencescontacts.get_audience_contact_id** | /audiences/{audience_id}/contacts/{contact_id} |
+| **audiencescontacts.list_audience_contact_list** | /audiences/{audience_id}/contacts |
+| **audiencescontacts.patch_audience_contact** | /audiences/{audience_id}/contacts/{contact_id} |
 | **authorizedApps.list** | /authorized-apps |
 | **authorizedApps.get** | /authorized-apps/{app_id} |
 | **automations.archive** | /automations/{workflow_id}/actions/archive |
@@ -155,6 +159,14 @@ All URIs are relative to *https://server.api.mailchimp.com/3.0*
 | **connectedSites.get** | /connected-sites/{connected_site_id} |
 | **connectedSites.create** | /connected-sites |
 | **connectedSites.verify_script_installation** | /connected-sites/{connected_site_id}/actions/verify-script-installation |
+| **audiencescontacts.create_audience_contact** | /audiences/{audience_id}/contacts |
+| **audiencescontacts.get_audience_contact_id** | /audiences/{audience_id}/contacts/{contact_id} |
+| **audiencescontacts.list_audience_contact_list** | /audiences/{audience_id}/contacts |
+| **contacts.list_audiences** | /audiences |
+| **contacts.get_audience_id** | /audiences/{audience_id} |
+| **audiencescontacts.patch_audience_contact** | /audiences/{audience_id}/contacts/{contact_id} |
+| **contacts.archive_contact** | /audiences/{audience_id}/contacts/{contact_id}/actions/archive |
+| **contacts.forget_contact** | /audiences/{audience_id}/contacts/{contact_id}/actions/forget |
 | **conversations.list** | /conversations |
 | **conversations.get** | /conversations/{conversation_id} |
 | **conversations.get_conversation_messages** | /conversations/{conversation_id}/messages |
@@ -217,6 +229,8 @@ All URIs are relative to *https://server.api.mailchimp.com/3.0*
 | **ecommerce.add_promo_code** | /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}/promo-codes |
 | **ecommerce.add_promo_rules** | /ecommerce/stores/{store_id}/promo-rules |
 | **ecommerce.set_store_customer** | /ecommerce/stores/{store_id}/customers/{customer_id} |
+| **ecommerce.set_order** | /ecommerce/stores/{store_id}/orders/{order_id} |
+| **ecommerce.create_or_update_store_product** | /ecommerce/stores/{store_id}/products/{product_id} |
 | **ecommerce.add_product_variant** | /ecommerce/stores/{store_id}/products/{product_id}/variants/{variant_id} |
 | **facebookAds.list** | /facebook-ads |
 | **facebookAds.get_ad** | /facebook-ads/{outreach_id} |
@@ -225,6 +239,7 @@ All URIs are relative to *https://server.api.mailchimp.com/3.0*
 | **fileManager.files** | /file-manager/files |
 | **fileManager.get_file** | /file-manager/files/{file_id} |
 | **fileManager.list_folders** | /file-manager/folders |
+| **fileManager.folders_files** | /file-manager/folders/{folder_id}/files |
 | **fileManager.get_folder** | /file-manager/folders/{folder_id} |
 | **fileManager.update_file** | /file-manager/files/{file_id} |
 | **fileManager.update_folder** | /file-manager/folders/{folder_id} |
@@ -311,12 +326,12 @@ All URIs are relative to *https://server.api.mailchimp.com/3.0*
 | **reporting.get_landing_page_reports_all** | /reporting/landing-pages |
 | **reporting.get_landing_page_report** | /reporting/landing-pages/{outreach_id} |
 | **reporting.get_survey_reports_all** | /reporting/surveys |
-| **reporting.get_survey_report** | /reporting/surveys/{outreach_id} |
-| **reporting.get_survey_question_reports_all** | /reporting/surveys/{outreach_id}/questions |
-| **reporting.get_survey_question_report** | /reporting/surveys/{outreach_id}/questions/{question_id} |
-| **reporting.get_survey_question_answers** | /reporting/surveys/{outreach_id}/questions/{question_id}/answers |
-| **reporting.get_survey_responses_all** | /reporting/surveys/{outreach_id}/responses |
-| **reporting.get_survey_response** | /reporting/surveys/{outreach_id}/responses/{response_id} |
+| **reporting.get_survey_report** | /reporting/surveys/{survey_id} |
+| **reporting.get_survey_question_reports_all** | /reporting/surveys/{survey_id}/questions |
+| **reporting.get_survey_question_report** | /reporting/surveys/{survey_id}/questions/{question_id} |
+| **reporting.get_survey_question_answers** | /reporting/surveys/{survey_id}/questions/{question_id}/answers |
+| **reporting.get_survey_responses_all** | /reporting/surveys/{survey_id}/responses |
+| **reporting.get_survey_response** | /reporting/surveys/{survey_id}/responses/{response_id} |
 | **reports.get_all_campaign_reports** | /reports |
 | **reports.get_campaign_report** | /reports/{campaign_id} |
 | **reports.get_campaign_abuse_reports** | /reports/{campaign_id}/abuse-reports |
@@ -342,6 +357,7 @@ All URIs are relative to *https://server.api.mailchimp.com/3.0*
 | **root.get_root** | / |
 | **searchCampaigns.search** | /search-campaigns |
 | **searchMembers.search** | /search-members |
+| **Surveys.create_email** | /lists/{list_id}/surveys/{survey_id}/actions/create-email |
 | **Surveys.publish_survey** | /lists/{list_id}/surveys/{survey_id}/actions/publish |
 | **Surveys.unpublish_survey** | /lists/{list_id}/surveys/{survey_id}/actions/unpublish |
 | **templateFolders.remove** | /template-folders/{folder_id} |
